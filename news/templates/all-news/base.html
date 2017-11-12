@@ -1,27 +1,37 @@
-{%load bootstrap%}
+{% load bootstrap3 %}
+{% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   {%if title%}
-   <title>Moringa Tribune - {{title}}</title>
-   {%else%}
-    <title>Document</title>
-   {%endif%} 
-   {%block styles%}
-    {%bootstrap_css%}
-   {%endblock%}
-</head>
-    <body>
-        {%block content%}
-            <h1>News For {{date|date:"l d-F Y"}}</h1>
-        {%endblock%}
+<html>
 
-        {%block scripts%}
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            {%bootstrap_javascript%}
-        {%endblock%}
-    </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+  {% endblock %}
+
+</head>
+
+<body>
+  {% include "navbar.html" %}
+
+  {% block content %} <h1>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+
+
+  {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+  {% endblock %}
+
+</body>
+
 </html>
